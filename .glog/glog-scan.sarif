@@ -1,0 +1,1404 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-b136adc0-2aa2-413f-b1ea-54edbcb5e191",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-cbe4abff-6abe-44ad-ab3d-cb853496a3d2",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe vulnerability arises from the use of the MD5 hashing algorithm for security purposes. MD5 is considered cryptographically broken and unsuitable for further use due to its vulnerability to collision attacks. In Python, the `hashlib` library provides a way to use MD5, but it is recommended to set `usedforsecurity=False` to indicate that the hash is not being used for security purposes. However, this does not mitigate the inherent weaknesses of MD5.\n\n### General Mitigation Advice\n\n1. **Avoid Using MD5 for Security**: Replace MD5 with a more secure hashing algorithm such as SHA-256 or SHA-3.\n2. **Use `usedforsecurity=False`**: If MD5 must be used for non-security purposes, ensure that `usedforsecurity=False` is set to indicate that the hash is not being used for security.\n3. **Regularly Update Dependencies**: Ensure that all libraries and dependencies are up-to-date to benefit from the latest security patches.\n\n### Source Code Fix Recommendation\n\nReplace the use of MD5 with a more secure hashing algorithm, such as SHA-256:\n\n```python\nimport hashlib\n\ndef secure_hash(text):\n    return hashlib.sha256(text.encode()).hexdigest()\n```\n\n### Library Dependencies\n\nThe code example requires the following library to execute properly:\n\n- `hashlib`: This is a built-in library in Python, so no additional installation is required.\n\n### Relevant OWASP Resources\n\n- [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)\n- [OWASP Top Ten 2021](https://owasp.org/Top10/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-327: Use of a Broken or Risky Cryptographic Algorithm](https://cwe.mitre.org/data/definitions/327.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B324"
+                ]
+              }
+            },
+            {
+              "id": "glog-c90467d9-f266-4cd5-8e6a-19c9b8a11dd4",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-19d396b8-39a6-4fae-bb1a-68c3ada66480",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-367d527a-6864-4fb8-966e-571a4a5db141",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-a94096d3-9ec5-449a-892a-2412055336a8",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe vulnerability arises when using `xml.etree.ElementTree.fromstring` to parse XML data that is untrusted or comes from an untrusted source. This can lead to XML External Entity (XXE) attacks, which can allow attackers to read arbitrary files on the system, perform denial of service attacks, or even execute remote code, depending on the system configuration and the XML content.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, it is recommended to use the `defusedxml` library, which provides a safer way to parse XML data by disabling potentially dangerous XML features. Alternatively, you can ensure that `defusedxml.defuse_stdlib()` is called to patch the standard library XML modules to prevent these attacks.\n\n### Source Code Fix Recommendation\n\nReplace the vulnerable code with a safer alternative using `defusedxml`:\n\n```python\nfrom defusedxml.ElementTree import fromstring\n\nroot = fromstring(response.content)\n```\n\nOr, if you prefer to patch the standard library:\n\n```python\nimport defusedxml\ndefusedxml.defuse_stdlib()\n\nfrom xml.etree import ElementTree\n\nroot = ElementTree.fromstring(response.content)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, you need the following library:\n\n- `defusedxml`\n\nYou can install it using pip:\n\n```bash\npip install defusedxml\n```\n\n### OWASP Resources\n\n- [OWASP XML External Entity (XXE) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-611: Improper Restriction of XML External Entity Reference ('XXE')](https://cwe.mitre.org/data/definitions/611.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B314"
+                ]
+              }
+            },
+            {
+              "id": "glog-c4c8c3b2-0be5-42f3-b2b5-d8bca616e83f",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-8a29cfcd-f5a2-41b3-b7c5-d6ea4b0224a0",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-f87c596b-aba6-4ba5-81db-d406c1c31a8f",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-a58cc77d-3bf4-49c8-90fd-be75378cb664",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-a73eb01f-fabb-4ce4-89e6-dda2adfd259b",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-d9aa714a-d82b-4865-afa2-b2abce6fa6dd",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-07664e61-aeff-47a2-af1f-9e4d4e2b18bb",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Attachment to All Interfaces\" vulnerability occurs when a network service is configured to listen on all available network interfaces (e.g., `0.0.0.0` for IPv4 or `::` for IPv6). This can expose the service to unintended networks, increasing the risk of unauthorized access or attacks. In Python applications, this vulnerability can arise when using environment variables or default configurations that bind the application to all interfaces.\n\n### Mitigation Advice\n\n1. **Restrict Binding**: Configure the application to bind only to specific, necessary interfaces. This limits exposure to only the intended network.\n\n2. **Environment Configuration**: Use environment variables to specify the exact interface or IP address the application should bind to, rather than defaulting to `0.0.0.0`.\n\n3. **Network Security**: Implement network-level security controls such as firewalls to restrict access to the application.\n\n4. **Regular Audits**: Regularly audit network configurations and application settings to ensure they adhere to security best practices.\n\n### Source Code Fix Recommendation\n\nTo mitigate this vulnerability, modify the code to bind to a specific IP address or interface. For example, if the application should only be accessible on the local network, use a specific IP address instead of `0.0.0.0`.\n\n```python\nimport os\n\n# Original code\n# APP_HOST = os.getenv(\"APP_HOST\", \"0.0.0.0\")\n\n# Recommended fix: Bind to a specific IP address\nAPP_HOST = os.getenv(\"APP_HOST\", \"192.168.1.100\")  # Replace with the appropriate IP address\n```\n\n### Library Dependencies\n\nThe code example provided does not require any additional library dependencies beyond Python's standard library.\n\n### OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\nThese links have been verified to be active and accessible to anonymous users."
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-0e11fdab-c57a-44f5-a33f-f83b61e13de6",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Attachment to All Interfaces\" vulnerability occurs when a Python application is configured to listen on all network interfaces, typically by setting the host parameter to `\"0.0.0.0\"`. This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, and other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `app.run()` method to bind to `localhost` or a specific IP address instead of `\"0.0.0.0\"`.\n\n```python\napp.run(host=\"127.0.0.1\", port=5000)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `Flask`: A micro web framework for Python.\n\nYou can install Flask using pip:\n\n```bash\npip install Flask\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-00893898-9833-479c-baa8-bad8cc956b5f",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-b3bfb1d6-bb70-465b-8e70-fe51a33317fe",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potentially Unsafe Use of Temporary File/Directory\" vulnerability occurs when a program creates temporary files or directories in an insecure manner. This can lead to security issues such as unauthorized access, data corruption, or privilege escalation. In Python, using predictable file paths in shared directories like `/tmp` can be particularly dangerous, as it may allow an attacker to exploit race conditions or perform symlink attacks.\n\n### General Mitigation Advice\n\n1. **Use Secure Libraries**: Utilize libraries that handle temporary files securely, such as Python's `tempfile` module.\n2. **Randomize File Names**: Ensure that temporary file names are unpredictable to prevent attackers from guessing them.\n3. **Set Appropriate Permissions**: Limit access to temporary files by setting restrictive permissions.\n4. **Avoid Shared Directories**: Use directories with restricted access instead of shared ones like `/tmp`.\n\n### Source Code Fix Recommendation\n\nReplace the insecure temporary file path with a secure method using the `tempfile` module:\n\n```python\nimport tempfile\n\n# Securely create a temporary file\nwith tempfile.NamedTemporaryFile(delete=False) as temp_file:\n    temp_file_path = temp_file.name\n    # Write data to the temporary file\n    temp_file.write(b\"Your data here\")\n```\n\n### Library Dependencies\n\nThe code example requires the following standard library:\n\n- `tempfile`: This is part of Python's standard library and does not require additional installation.\n\n### Relevant Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [Common Weakness Enumeration (CWE-377)](https://cwe.mitre.org/data/definitions/377.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B108"
+                ]
+              }
+            },
+            {
+              "id": "glog-d7a669e5-9a82-4fd3-9ce1-93483302e5ec",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-1df69bc5-dacf-4c65-92cc-b447a19e1a79",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-c5dd8e78-8f38-464a-a74b-6d5e8ad38463",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-a2e3dad6-19d9-4b8b-979d-bc7a4868caa1",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-aaeda2e1-9bf5-451e-9c3d-5e1c207a2005",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-c5c4b65b-c8ac-40f2-ac87-9d16765a1c77",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-0861f0b2-d2c9-4ed2-bc3c-cce51ce90076",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-b73b85c0-e58f-412f-b304-b0ccf42743c1",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-2ad79c72-a068-4a4e-94a9-dd1a4f58aa36",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potentially Unsafe Use of Temporary File/Directory\" vulnerability occurs when temporary files or directories are created in an insecure manner. This can lead to security issues such as unauthorized access, data leakage, or even code execution if an attacker can predict the file path and manipulate it. In Python, using predictable file paths for temporary files, especially in shared directories like `/tmp`, can expose applications to these risks.\n\n### General Mitigation Advice\n\n1. **Use Secure Libraries**: Utilize libraries that handle temporary files securely, such as Python's `tempfile` module, which provides functions to create temporary files and directories in a secure manner.\n2. **Avoid Predictable Names**: Do not use predictable names for temporary files. Instead, rely on the system to generate unique names.\n3. **Set Appropriate Permissions**: Ensure that temporary files and directories have the correct permissions to prevent unauthorized access.\n4. **Clean Up**: Always clean up temporary files and directories after use to minimize the risk of exposure.\n\n### Source Code Fix Recommendation\n\nReplace the insecure temporary file creation with a secure method using the `tempfile` module:\n\n```python\nimport tempfile\nimport os\n\n# Securely create a temporary file\nwith tempfile.NamedTemporaryFile(delete=False) as temp_file:\n    temp_file_path = temp_file.name\n    # Write data to the temporary file\n    temp_file.write(request.file['content'])\n\n# Ensure the file is removed after use\nos.remove(temp_file_path)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `tempfile` (standard library)\n- `os` (standard library)\n\n### Relevant Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n- [CWE-377: Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B108"
+                ]
+              }
+            },
+            {
+              "id": "glog-07174f0b-901b-40ed-a6a4-0b5687b45634",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-ff7edc9e-7d6e-40c1-9e94-b8d4d8c8c020",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Connectivity Across All Interfaces\" vulnerability arises when a Python application is configured to listen on all network interfaces (`0.0.0.0`). This configuration can expose the application to the internet, making it accessible to anyone who can reach the server's IP address. This can lead to unauthorized access, data exposure, or other security risks if the application is not properly secured.\n\n### General Mitigation Advice\n\n1. **Restrict Binding**: Bind the application to `localhost` or a specific IP address to limit exposure.\n2. **Use a Firewall**: Implement firewall rules to restrict access to the application.\n3. **Authentication and Authorization**: Ensure proper authentication and authorization mechanisms are in place.\n4. **TLS/SSL**: Use TLS/SSL to encrypt data in transit.\n5. **Regular Security Audits**: Conduct regular security audits and vulnerability assessments.\n\n### Source Code Fix Recommendation\n\nTo mitigate the vulnerability, modify the `uvicorn.run` call to bind to `localhost` or a specific IP address instead of `0.0.0.0`.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8001)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`\n- `fastapi` (assuming `app` is a FastAPI application)\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP API Security Top Ten](https://owasp.org/www-project-api-security/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            },
+            {
+              "id": "glog-ca3699b1-e346-400a-9af8-654b7e941904",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe \"Potential Binding Across All Interfaces\" vulnerability occurs when a server application is configured to listen on all available network interfaces (`0.0.0.0`). This can expose the application to the internet, making it accessible to unauthorized users and increasing the risk of attacks. In the context of a Python application using Uvicorn, binding to `0.0.0.0` can lead to unintended exposure of the application to external networks.\n\n### General Mitigation Advice\n\nTo mitigate this vulnerability, configure the server to bind only to specific, trusted network interfaces. This limits the exposure of the application to only those networks that are necessary for its operation. Additionally, consider implementing network-level security measures such as firewalls and access control lists (ACLs) to further restrict access.\n\n### Source Code Fix Recommendation\n\nTo address the specific vulnerability sink in the code example, modify the `uvicorn.run` call to bind to a specific IP address, such as `127.0.0.1` for local development or a specific internal IP address for production environments.\n\n```python\nuvicorn.run(app, host=\"127.0.0.1\", port=8055)\n```\n\n### Library Dependencies\n\nTo execute the code example properly, the following library dependencies are required:\n\n- `uvicorn`: An ASGI server implementation for running Python web applications.\n- `fastapi` or any other ASGI-compatible framework: If `app` is a FastAPI application, you will need the FastAPI library.\n\nYou can install these dependencies using pip:\n\n```bash\npip install uvicorn fastapi\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)\n- [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)\n\nThese links are verified to be active and accessible to anonymous users."
+              },
+              "properties": {
+                "tags": [
+                  "B104"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-b136adc0-2aa2-413f-b1ea-54edbcb5e191",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "ask-reddit-agent/agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 27,
+                  "endLine": 192,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 191,
+                  "endLine": 192,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-cbe4abff-6abe-44ad-ab3d-cb853496a3d2",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Use of weak MD5 hash for security. Consider usedforsecurity=False"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "agentic-rag-knowledge-graph/ingestion/embedder.py"
+                },
+                "region": {
+                  "startLine": 333,
+                  "startColumn": 16,
+                  "endLine": 333,
+                  "endColumn": 42,
+                  "snippet": {
+                    "text": "        return hashlib.md5(text.encode()).hexdigest()\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 332,
+                  "endLine": 334,
+                  "snippet": {
+                    "text": "        import hashlib\n        return hashlib.md5(text.encode()).hexdigest()\n\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "HIGH",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-c90467d9-f266-4cd5-8e6a-19c9b8a11dd4",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "crawl4AI-agent/studio-integration-version/pydantic_ai_expert_endpoint.py"
+                },
+                "region": {
+                  "startLine": 168,
+                  "startColumn": 27,
+                  "endLine": 168,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 167,
+                  "endLine": 168,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-19d396b8-39a6-4fae-bb1a-68c3ada66480",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file-agent/file_agent.py"
+                },
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 27,
+                  "endLine": 184,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 183,
+                  "endLine": 184,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-367d527a-6864-4fb8-966e-571a4a5db141",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "genericsuite-app-maker-agent/gsam_ottomator_agent_app.py"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 27,
+                  "endLine": 102,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 101,
+                  "endLine": 102,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-a94096d3-9ec5-449a-892a-2412055336a8",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "crawl4AI-agent-v2/crawl4AI-examples/3-crawl_sitemap_in_parallel.py"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 16,
+                  "endLine": 82,
+                  "endColumn": 56,
+                  "snippet": {
+                    "text": "        root = ElementTree.fromstring(response.content)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 81,
+                  "endLine": 83,
+                  "snippet": {
+                    "text": "        # Parse the XML\n        root = ElementTree.fromstring(response.content)\n        \n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-c4c8c3b2-0be5-42f3-b2b5-d8bca616e83f",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lead-generator-agent/leadgen_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 27,
+                  "endLine": 167,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 166,
+                  "endLine": 167,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-8a29cfcd-f5a2-41b3-b7c5-d6ea4b0224a0",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lead-generator-agent/studio_leadgen_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 27,
+                  "endLine": 174,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 173,
+                  "endLine": 174,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-f87c596b-aba6-4ba5-81db-d406c1c31a8f",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "mcp-agent-army/studio-integration-version/mcp_agent_army_endpoint.py"
+                },
+                "region": {
+                  "startLine": 180,
+                  "startColumn": 27,
+                  "endLine": 180,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 179,
+                  "endLine": 180,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-a58cc77d-3bf4-49c8-90fd-be75378cb664",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "mem0-agent/studio-integration-version/mem0_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 27,
+                  "endLine": 193,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 192,
+                  "endLine": 193,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-a73eb01f-fabb-4ce4-89e6-dda2adfd259b",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "nba-agent/agent_trial/nba_agent_1.py"
+                },
+                "region": {
+                  "startLine": 954,
+                  "startColumn": 27,
+                  "endLine": 954,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 953,
+                  "endLine": 954,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-d9aa714a-d82b-4865-afa2-b2abce6fa6dd",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "nba-agent/nba_agent.py"
+                },
+                "region": {
+                  "startLine": 721,
+                  "startColumn": 27,
+                  "endLine": 721,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 720,
+                  "endLine": 721,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-07664e61-aeff-47a2-af1f-9e4d4e2b18bb",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "agentic-rag-knowledge-graph/agent/api.py"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 34,
+                  "endLine": 60,
+                  "endColumn": 43,
+                  "snippet": {
+                    "text": "APP_HOST = os.getenv(\"APP_HOST\", \"0.0.0.0\")\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 59,
+                  "endLine": 61,
+                  "snippet": {
+                    "text": "APP_ENV = os.getenv(\"APP_ENV\", \"development\")\nAPP_HOST = os.getenv(\"APP_HOST\", \"0.0.0.0\")\nAPP_PORT = int(os.getenv(\"APP_PORT\", 8000))\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-0e11fdab-c57a-44f5-a33f-f83b61e13de6",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "google-a2a-agent/server.py"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 18,
+                  "endLine": 74,
+                  "endColumn": 27,
+                  "snippet": {
+                    "text": "    app.run(host=\"0.0.0.0\", port=5000)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 73,
+                  "endLine": 74,
+                  "snippet": {
+                    "text": "if __name__ == \"__main__\":\n    app.run(host=\"0.0.0.0\", port=5000)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-00893898-9833-479c-baa8-bad8cc956b5f",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pydantic-ai-advanced-researcher/studio-integration-version/web_search_endpoint.py"
+                },
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 27,
+                  "endLine": 165,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 164,
+                  "endLine": 165,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-b3bfb1d6-bb70-465b-8e70-fe51a33317fe",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Probable insecure usage of temp file/directory."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "ottomarkdown-agent/file_agent.py"
+                },
+                "region": {
+                  "startLine": 215,
+                  "startColumn": 30,
+                  "endLine": 215,
+                  "endColumn": 62,
+                  "snippet": {
+                    "text": "            temp_file_path = f\"/tmp/temp_file_{file['name']}\"\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 214,
+                  "endLine": 216,
+                  "snippet": {
+                    "text": "            \n            temp_file_path = f\"/tmp/temp_file_{file['name']}\"\n            with open(temp_file_path, \"wb\") as f:\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-d7a669e5-9a82-4fd3-9ce1-93483302e5ec",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "ottomarkdown-agent/file_agent.py"
+                },
+                "region": {
+                  "startLine": 609,
+                  "startColumn": 27,
+                  "endLine": 609,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 608,
+                  "endLine": 609,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-1df69bc5-dacf-4c65-92cc-b447a19e1a79",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pydantic-ai-mcp-agent/studio-integration-version/pydantic_mcp_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 173,
+                  "startColumn": 27,
+                  "endLine": 173,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 172,
+                  "endLine": 173,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-c5dd8e78-8f38-464a-a74b-6d5e8ad38463",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pydantic-github-agent/github_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 27,
+                  "endLine": 166,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 165,
+                  "endLine": 166,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-a2e3dad6-19d9-4b8b-979d-bc7a4868caa1",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pydantic-github-agent/studio-integration-version/github_agent_endpoint.py"
+                },
+                "region": {
+                  "startLine": 163,
+                  "startColumn": 27,
+                  "endLine": 163,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 162,
+                  "endLine": 163,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-aaeda2e1-9bf5-451e-9c3d-5e1c207a2005",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "streambuzz-agent/streambuzz.py"
+                },
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 27,
+                  "endLine": 231,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 230,
+                  "endLine": 231,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-c5c4b65b-c8ac-40f2-ac87-9d16765a1c77",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "thirdbrain-mcp-openai-agent/thirdbrain_mcp_openai_agent.py"
+                },
+                "region": {
+                  "startLine": 237,
+                  "startColumn": 27,
+                  "endLine": 237,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 236,
+                  "endLine": 237,
+                  "snippet": {
+                    "text": "    # Run the server\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-0861f0b2-d2c9-4ed2-bc3c-cce51ce90076",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tweet-generator-agent/main.py"
+                },
+                "region": {
+                  "startLine": 285,
+                  "startColumn": 27,
+                  "endLine": 285,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 284,
+                  "endLine": 285,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-b73b85c0-e58f-412f-b304-b0ccf42743c1",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "~sample-python-agent~/sample_postgres_agent.py"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 27,
+                  "endLine": 160,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 159,
+                  "endLine": 160,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-2ad79c72-a068-4a4e-94a9-dd1a4f58aa36",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Probable insecure usage of temp file/directory."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "ottomarkdown-agent/file_agent.py"
+                },
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 26,
+                  "endLine": 437,
+                  "endColumn": 66,
+                  "snippet": {
+                    "text": "        temp_file_path = f\"/tmp/temp_file_{request.file['name']}\"\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 436,
+                  "endLine": 438,
+                  "snippet": {
+                    "text": "        \n        temp_file_path = f\"/tmp/temp_file_{request.file['name']}\"\n        try:\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-07174f0b-901b-40ed-a6a4-0b5687b45634",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "~sample-python-agent~/sample_supabase_agent.py"
+                },
+                "region": {
+                  "startLine": 153,
+                  "startColumn": 27,
+                  "endLine": 153,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 152,
+                  "endLine": 153,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-ff7edc9e-7d6e-40c1-9e94-b8d4d8c8c020",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "~voiceflow-dialog-api-integration~/voiceflow_integration.py"
+                },
+                "region": {
+                  "startLine": 205,
+                  "startColumn": 27,
+                  "endLine": 205,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 204,
+                  "endLine": 205,
+                  "snippet": {
+                    "text": "    # Feel free to change the port here if you need\n    uvicorn.run(app, host=\"0.0.0.0\", port=8001)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        },
+        {
+          "ruleId": "glog-ca3699b1-e346-400a-9af8-654b7e941904",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Possible binding to all interfaces."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "python-local-ai-agent/main.py"
+                },
+                "region": {
+                  "startLine": 280,
+                  "startColumn": 27,
+                  "endLine": 280,
+                  "endColumn": 36,
+                  "snippet": {
+                    "text": "    uvicorn.run(app, host=\"0.0.0.0\", port=8055)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 279,
+                  "endLine": 280,
+                  "snippet": {
+                    "text": "    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8055)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "MEDIUM"
+          }
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
